@@ -1,0 +1,14 @@
+---
+description: Step-by-step instruction on how to generate an "API RESOURCE" for Laravel
+globs: 
+alwaysApply: false
+---
+
+# When asked to create an `API RESOURCE`, perform the following steps:
+- Create a model and a migration file using the `artisan make:model -m` command
+- Generate the columns and their data types and parameters based on the given table structure
+- Add these columns to the `$fillable` property of the model except for the auto-incrementing ID
+- Generate the relationships inside the Model file based on the given foreign keys
+- Generate an `API Resource Controller` using the [controller.mdc](mdc:.cursor/rules/controller.mdc) rule
+- Add the generated controller in the `/routes/api.php` as a `Route::apiResource`
+

@@ -1,0 +1,22 @@
+---
+description: Instruction on how to generate Laravel Controller
+globs: app/Http/Controllers
+alwaysApply: false
+---
+
+# To generate an `API Resource Laravel Controller` follow this step-by-step instruction:
+- Generate four (4) [`HTTP Requests`](mdc:https:/laravel.com/docs/11.x/requests) with the model name as the parent folder. The 4 request files must be:
+    - `ModelName/IndexRequest`
+    - `ModelName/StoreRequest`
+    - `ModelName/ShowRequest`
+    - `ModelName/UpdateRequest`
+- The `StoreRequest` and `UpdateRequest` must contain validation rules based on the Model's `$fillable` fields
+- Generate an `HTTP Response` using the command `php artisan make:resource`, then add all the existing columns of the model. 
+- In the generated controller, replace the `Illuminate\Http\Request` dependency injection with the generated HTTP Request in the previous step
+- Execute the command `php artisan make:controller --api --resource --model={MODEL NAME}`
+- Use the generated `HTTP response` as the default response for all functions except for `destroy`.
+- In the `index` function, add the following logic:
+    - Result must be paginated with 15 rows as default but accepts an optional `per_page` request.
+    - `names`, `address`, and other commonly searched columns must be searchable with the wildcard search
+    - Foreign keys must be searchable also using the `where` function
+    - Allow the user to optionally sort any columns by ascending or descending order
