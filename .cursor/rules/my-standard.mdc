@@ -12,3 +12,7 @@ alwaysApply: false
 - Generate an `API Resource Controller` using the [controller.mdc](mdc:.cursor/rules/controller.mdc) rule
 - Add the generated controller in the `/routes/api.php` as a `Route::apiResource`
 
+# When creating a new Model in the `app/Models` folder
+- Make sure the artisan command has the `-m` flag to create the necessary migration files too
+- Make sure you generate a Seeder file for this model, and populate it with necessary information
+- Make sure the Seeder file is called in the [DatabaseSeeder.php](mdc:database/seeders/DatabaseSeeder.php)

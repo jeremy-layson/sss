@@ -13,6 +13,8 @@ class Profile extends Component
     public string $name = '';
 
     public string $email = '';
+    
+    public string $pseudonym = '';
 
     /**
      * Mount the component.
@@ -21,6 +23,7 @@ class Profile extends Component
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->pseudonym = Auth::user()->pseudonym ?? '';
     }
 
     /**
@@ -32,7 +35,7 @@ class Profile extends Component
 
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-
+            'pseudonym' => ['nullable', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',

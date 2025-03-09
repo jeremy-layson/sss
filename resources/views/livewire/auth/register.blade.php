@@ -26,6 +26,16 @@
             placeholder="email@example.com"
         />
 
+        <!-- Pseudonym -->
+        <flux:input
+            wire:model="pseudonym"
+            :label="__('Pseudonym')"
+            type="text"
+            required
+            autocomplete="nickname"
+            :placeholder="__('Your writer name')"
+        />
+
         <!-- Password -->
         <flux:input
             wire:model="password"

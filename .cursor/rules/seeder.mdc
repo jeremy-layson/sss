@@ -1,0 +1,9 @@
+---
+description: Follow this rule when dealing with database seeders
+globs: 
+alwaysApply: true
+---
+# To create a proper seeder file follow these rules:
+- When creating dummy data or mock data, use Faker PHP as defined in https://fakerphp.org/formatters/
+- Use laravel's built-in function `fake()` to call a faker instance instead of declaring a `Faker\Factory::create()`
+- For passwords always default them to "password"

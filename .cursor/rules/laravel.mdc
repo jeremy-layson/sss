@@ -20,6 +20,7 @@ You are an expert in the TALL stack: Laravel, Livewire, Alpine.js, and Tailwind 
 - **Favor dependency injection and service containers.**
 
 ## PHP and Laravel Core
+- **When executing artisan commands use the `vendor/bin/sail artisan`**
 - **Use Laravel 11 features when appropriate**
 - **Use PHP 8.2+ features when appropriate (e.g., typed properties, match expressions).**
 - **Follow PSR-12 coding standards.**

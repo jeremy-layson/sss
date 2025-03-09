@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'pseudonym',
+        'role',
     ];
 
     /**
@@ -56,5 +58,29 @@ class User extends Authenticatable
             ->explode(' ')
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
+    }
+
+    /**
+     * Get the works that belong to the user.
+     */
+    public function works()
+    {
+        return $this->hasMany(Work::class);
+    }
+
+    /**
+     * Get the ratings that belong to the user.
+     */
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+    /**
+     * Check if user is an admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
     }
 }

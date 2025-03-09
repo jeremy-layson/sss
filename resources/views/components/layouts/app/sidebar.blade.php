@@ -13,7 +13,12 @@
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
+                    @if(auth()->check() && auth()->user()->isAdmin())
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                    @endif
+                    <flux:navlist.item icon="book-open" :href="route('works.random')" :current="request()->routeIs('works.random')" wire:navigate>{{ __('Read') }}</flux:navlist.item>
+                    <flux:navlist.item icon="document-text" :href="route('works.create')" :current="request()->routeIs('works.create')" wire:navigate>{{ __('Submit Work') }}</flux:navlist.item>
+                    <flux:navlist.item icon="document" :href="route('works.index')" :current="request()->routeIs('works.index')" wire:navigate>{{ __('My Works') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -29,6 +34,7 @@
                 </flux:navlist.item>
             </flux:navlist>
 
+            @if(auth()->check())
             <!-- Desktop User Menu -->
             <flux:dropdown position="bottom" align="start">
                 <flux:profile
@@ -73,8 +79,15 @@
                     </form>
                 </flux:menu>
             </flux:dropdown>
+            @else
+            <!-- Login Link when not authenticated -->
+            <flux:navlist variant="outline">
+                <flux:navlist.item icon="arrow-right-end-on-rectangle" :href="route('login')" wire:navigate>{{ __('Log In') }}</flux:navlist.item>
+            </flux:navlist>
+            @endif
         </flux:sidebar>
 
+        @if(auth()->check())
         <!-- Mobile User Menu -->
         <flux:header class="lg:hidden">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
@@ -124,6 +137,18 @@
                 </flux:menu>
             </flux:dropdown>
         </flux:header>
+        @else
+        <!-- Mobile header with login option when not authenticated -->
+        <flux:header class="lg:hidden">
+            <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+            
+            <flux:spacer />
+            
+            <a href="{{ route('login') }}" class="flex items-center p-2 text-sm font-medium" wire:navigate>
+                {{ __('Log In') }}
+            </a>
+        </flux:header>
+        @endif
 
         {{ $slot }}
 

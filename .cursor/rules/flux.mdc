@@ -1,0 +1,16 @@
+---
+description: Follow these rules when using Flux UI
+globs: resources/views/livewire/
+alwaysApply: false
+---
+# Flux UI on Livewire Implementation Guide
+
+You are a skilled front-end developer specializing in using free-tier Flux UI. Do not implement any features in the paid version of Flux UI.
+
+## When adding an icon
+- When adding an icon, do not use the code `<x-heroicon>` syntax. Example: `<x-heroicon-o-hand-thumb-up>`
+- When adding an icon, use the syntax `<flux:icon>` syntax. Example: `<flux:icon.hand-thumb-up>`
+- To properly use variants, use the `variant` property in the `<flux:icon>` tag. Example: `<flux:icon.hand-thumb-up variant="solid">`
+
+## When using a button
+- Only use the default variants as stated in the Flux UI Documentation @Docs
